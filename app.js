@@ -7,7 +7,8 @@ let image2 = document.getElementById("image2");
 let image3 = document.getElementById("image3");
 
 let click = 0; // This is used for click count
-let maxClick = 3; // This is max clicks the user is allowed
+let maxClick = 2; // This is max clicks the user is allowed
+let usedDucks = [];
 
 function OddDuck(name, src) {
   // Constructor with key value pairs.
@@ -50,6 +51,9 @@ function renderOddDuck() {
   OddDuck.allDuckArray[duck1].views++; // Increase the views when rendered
   OddDuck.allDuckArray[duck2].views++;
   OddDuck.allDuckArray[duck3].views++;
+
+  usedDucks = [];
+  usedDucks.push(duck1, duck2, duck3);
 }
 
 //  This Funcation is the event listerner of the section with 2 images
@@ -76,7 +80,7 @@ function buttonClick(event) {
       duckContainer.removeEventListener("click", buttonClick);
 
       // Now the button will light up to be able to click .
-      button.addEventListener("click", renderResults);
+      button.addEventListener("click", renderChart); // was renderesults
       // Style button
       button.className = "clicks-allowed";
       duckContainer.classname = "not-voting";
@@ -88,15 +92,66 @@ function buttonClick(event) {
 
 // This renders results after max clicks
 
-function renderResults() {
-  let ul = document.getElementById("results"); // Creating it by Element
+// function renderResults() {
+//   let ul = document.getElementById("results"); // Creating it by Element
+//   for (let i = 0; i < OddDuck.allDuckArray.length; i++) {
+//     // Loops through the array of all pics
+//     let li = document.createElement("li"); // Creates a list items for each one
+//     li.textContent = `${OddDuck.allDuckArray[i].name} had ${OddDuck.allDuckArray[i].views}view(s) and was clicked ${OddDuck.allDuckArray[i].click} time(s).`; // Add the text to the output ( Name of Image , How many times it came on the screen and how many clicks each one got)
+//     ul.appendChild(li); // This appends each one to a List item
+//   }
+//   button.removeEventListener("click", renderResults); // This stops the button from being clicked again.
+// }
+
+function renderChart() {
+  let duckLikes = [];
+  let duckViews = [];
+  let duckName = [];
+
   for (let i = 0; i < OddDuck.allDuckArray.length; i++) {
-    // Loops through the array of all pics
-    let li = document.createElement("li"); // Creates a list items for each one
-    li.textContent = `${OddDuck.allDuckArray[i].name} had ${OddDuck.allDuckArray[i].views}view(s) and was clicked ${OddDuck.allDuckArray[i].click} time(s).`; // Add the text to the output ( Name of Image , How many times it came on the screen and how many clicks each one got)
-    ul.appendChild(li); // This appends each one to a List item
+    duckLikes.push(OddDuck.allDuckArray[i].click);
+    duckViews.push(OddDuck.allDuckArray[i].views);
+    duckName.push(OddDuck.allDuckArray[i].name);
   }
-  button.removeEventListener("click", renderResults); // This stops the button from being clicked again.
+  console.log(duckName);
+  console.log(duckLikes);
+  console.log(duckViews);
+
+  const data = {
+    labels: duckName,
+    datasets: [
+      {
+        label: "likes",
+        backgroundColor: "#3E2D40",
+        borderColor: "#fffff",
+        borderWidth: 1,
+        data: duckLikes,
+      },
+      {
+        label: "views",
+        backgroundColor: " #F5BD02",
+        borderColor: "#fffff",
+        borderWidth: 1,
+        data: duckViews,
+      },
+    ],
+  };
+
+  const config = {
+    type: "bar",
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  };
+
+  const canvasChart = document.getElementById("myChart").getContext("2d");
+  const myChart = new Chart(canvasChart, config);
+  // document.querySelector(".chart-container").classList.add("show");
 }
 
 new OddDuck("bag", "./img/bag.jpeg");

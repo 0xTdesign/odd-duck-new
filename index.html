@@ -11,58 +11,52 @@
   </head>
   <body>
 
-    <header class="title">
-      <nav>
+    <header>
         <div class="container-01">
-          <div class="logo">
-            <img src="/img/image-removebg-preview - 2022-09-06T141212.401.png" alt="logo" />
-          </div>
-          <div class="text">
-            <a href="">Odd Duck</a>
-            </div>
+        <div class="logo">
+        <img class="duck" src="/img/image-removebg-preview - 2022-09-06T141212.401.png" alt="logo" />
+        <div class="button-container">
+        <button class="btn" id="btn">Results</button>
         </div>
-      </nav>
+        </div>
+        </div>
     </header>
-    <main>
-      <section class="sidebar">
-        <div class="container-02">
-                <button class="btn" id="btn">View Results</button>
-          <ul class="" id="results">
-          </ul>
-          </div>
-      </section>
 
-      <section class="images">
-        <div id="img-container" class="container-03">
+      <section class="image">
+        <div class="container-02">
+        <ul class="" id="results">
+        </ul>
+        </div>
+        <div class="container-03" id="img-container">
           <img src="" alt="" class="" id="image1" />
           <img src="" alt="" class="" id="image2" />
           <img src="" alt="" class="" id="image3" />
         </div>
       </section>
 
-      <section class="content">
-        <div class="container-04">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-            sed totam fuga quasi aliquam aut consequuntur, ullam natus ratione?
-            Mollitia, sit deleniti? Alias porro dicta exercitationem consequatur
-            accusamus saepe temporibus voluptatem reiciendis asperiores vitae,
-            doloremque illo facere dolore quisquam perspiciatis illum.
-          </p>
-        </div>
+        <section class="sidebar">
+        <div class="container-02">
+          <ul class="" id="results">
+          </ul>
+          </div>
       </section>
-    </main>
+<div class="container-chart">
+  <canvas id="myChart" ></canvas>
+  </div>
+
 
     <footer class="footer">
-      <div class="container-05">
+      <div class="container-04">
+        <div class="footerlist">
         <ul>
+          <li><a href="">Tdesign</a></li>
           <li><a href="">&#169 ODD-DUCK 2022</a></li>
           <li><a href="">Contact</a></li>
-          <li><a href="">Tdesign</a></li>
         </ul>
+        </div>
       </div>
     </footer>
-    <!-- <script src="test.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
