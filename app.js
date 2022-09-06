@@ -1,5 +1,5 @@
 // Global Variables
-let duckContainer = document.querySelector("main");
+let duckContainer = document.getElementById("img-container");
 let result = document.getElementById("results");
 let button = document.getElementById("btn");
 let image1 = document.getElementById("image1");
@@ -32,11 +32,11 @@ function renderOddDuck() {
   let duck2 = getRandomNum();
   let duck3 = getRandomNum();
 
-  while (image1 === image2 && image2 === image3) {
+  while (duck1 === duck2 || duck2 === duck3 || duck1 === duck3) {
     console.log("Keeps looping the image count");
-    image1 = getRandomNum();
-    image2 = getRandomNum();
-    image3 = getRandomNum();
+    duck1 = getRandomNum();
+    duck2 = getRandomNum();
+    duck3 = getRandomNum();
   }
 
   //Set Image attributes for our images
@@ -52,39 +52,59 @@ function renderOddDuck() {
   OddDuck.allDuckArray[duck3].views++;
 }
 
-//  Now to do Button function
+//  This Funcation is the event listerner of the section with 2 images
 
 function buttonClick(event) {
+  console.log("tim rocks");
   if (event.target === duckContainer) {
     alert("Please only click the images");
-  }
-  click++;
-  let clickDuck = event.target.alt;
+  } else {
+    // In this else we've clicked on an image, so lets do all below
+    click++; // Keep track of image total clicks
+    let clickDuck = event.target.alt; //  Check if the Duck we clicked on's name matches the current looping Duck
 
-  for (let i = 0; i < OddDuck.allDuckArray.length; i++) {
-    if (clickDuck === OddDuck.allDuckArray[i].name) {
-      OddDuck.allDuckArray[i].clicks++;
-      break;
+    for (let i = 0; i < OddDuck.allDuckArray.length; i++) {
+      // Loop through an amount of times equal to the number of goats
+      if (clickDuck === OddDuck.allDuckArray[i].name) {
+        // Chck if the duck we clicked on's name matches the current looping Duck
+        OddDuck.allDuckArray[i].click++;
+        break; // Once its found no need for it to keep looking
+      }
+    }
+    if (click === maxClick) {
+      // Once the clicks have reached max clicks then it will stop the image click
+      duckContainer.removeEventListener("click", buttonClick);
+
+      // Now the button will light up to be able to click .
+      button.addEventListener("click", renderResults);
+      // Style button
+      button.className = "clicks-allowed";
+      duckContainer.classname = "not-voting";
+    } else {
+      renderOddDuck();
     }
   }
-  if (clicks === maxClick) {
-    // Once the clicks have reached max clicks then it will stop the image click
-    duckContainer.removeEventListener("click", buttonClick);
+}
 
-    // Now the button will light up to be able to click .
-    button.addEventListener("click", renderResults);
-    // Style button
-    button.className = "clicks-allowed";
-    duckContainer.classname = "not-voting";
+// This renders results after max clicks
+
+function renderResults() {
+  let ul = document.getElementById("results"); // Creating it by Element
+  for (let i = 0; i < OddDuck.allDuckArray.length; i++) {
+    // Loops through the array of all pics
+    let li = document.createElement("li"); // Creates a list items for each one
+    li.textContent = `${OddDuck.allDuckArray[i].name} had ${OddDuck.allDuckArray[i].views}view(s) and was clicked ${OddDuck.allDuckArray[i].click} time(s).`; // Add the text to the output ( Name of Image , How many times it came on the screen and how many clicks each one got)
+    ul.appendChild(li); // This appends each one to a List item
   }
+  button.removeEventListener("click", renderResults); // This stops the button from being clicked again.
 }
 
 new OddDuck("bag", "./img/bag.jpeg");
 new OddDuck("banana", "./img/banana.jpeg");
-new OddDuck("bathroom", "./img/bathroomn.jpeg");
+new OddDuck("bathroom", "./img/bathroom.jpeg");
 new OddDuck("boots", "./img/boots.jpeg");
 new OddDuck("breafast", "./img/breakfast.jpeg");
-new OddDuck("bubblegum", ".img/bubblegum.jpeg");
+new OddDuck("bubblegum", "./img/bubblegum.jpeg");
 new OddDuck("chair", "./img/chair.jpeg");
 new OddDuck("cthulhu", "./img/cthulhu.jpeg");
 new OddDuck("dog-duck", "./img/dog-duck.jpeg");
@@ -100,3 +120,5 @@ new OddDuck("water-can", "./img/water-can.jpeg");
 new OddDuck("wine-glass", "./img/wine-glass.jpeg");
 
 renderOddDuck(); // Final render
+
+duckContainer.addEventListener("click", buttonClick);
