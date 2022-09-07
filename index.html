@@ -10,13 +10,15 @@
     <title>odd-duck</title>
   </head>
   <body>
-
+    <div id="app">
     <header>
         <div class="container-01">
         <div class="logo">
         <img class="duck" src="./img/image-removebg-preview - 2022-09-06T141212.401.png" alt="logo" />
         <div class="button-container">
         <button class="btn" id="btn">Results</button>
+        <button class="btn" id="btn-clear">Clear</button>
+        <button class="btn" id="btn-restart">Restart</button>
         </div>
         </div>
         </div>
@@ -50,7 +52,7 @@
           </div>
       </section>
 
-<div class="container-chart">
+<div id="container-chart"class="container-chart">
   <canvas id="myChart" ></canvas>
   </div>
 
@@ -63,10 +65,14 @@
           <li><a href="">&#169 ODD-DUCK</a></li>
           <li><a href="">Contact</a></li>
         </ul>
+        <a src="./img/sun.jpeg"  href=""></a>
         </div>
       </div>
     </footer>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
+    <script src="theme.js"></script>
+    <!-- <script src="test.js"></script> -->
   </body>
 </html>

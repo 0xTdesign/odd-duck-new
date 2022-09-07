@@ -2,20 +2,23 @@
 let duckContainer = document.getElementById("img-container");
 let result = document.getElementById("results");
 let button = document.getElementById("btn");
+let buttonClear = document.getElementById("btn-clear");
+let buttonRestart = document.getElementById("btn-restart");
 let image1 = document.getElementById("image1");
 let image2 = document.getElementById("image2");
 let image3 = document.getElementById("image3");
 
 let click = 0; // This is used for click count
-let maxClick = 25; // This is max clicks the user is allowed
+let maxClick = 3; // This is max clicks the user is allowed
 let usedDucks = [];
 
-function OddDuck(name, src) {
+function OddDuck(name, src, clicks = 0, views = 0) {
+  //TODO  for local storage to count
   // Constructor with key value pairs.
   this.name = name;
   this.src = src;
-  this.click = 0;
-  this.views = 0;
+  this.click = clicks;
+  this.views = views;
 
   OddDuck.allDuckArray.push(this); // This code runs every time the constructor is called
 }
@@ -164,28 +167,65 @@ function renderChart() {
   const canvasChart = document.getElementById("myChart").getContext("2d");
   const myChart = new Chart(canvasChart, config);
   // document.querySelector(".chart-container").classList.add("show");
+
+  setLocalStorage(); //TODO This is setting the local storage
 }
 
-new OddDuck("bag", "./img/bag.jpeg");
-new OddDuck("banana", "./img/banana.jpeg");
-new OddDuck("bathroom", "./img/bathroom.jpeg");
-new OddDuck("boots", "./img/boots.jpeg");
-new OddDuck("breafast", "./img/breakfast.jpeg");
-new OddDuck("bubblegum", "./img/bubblegum.jpeg");
-new OddDuck("chair", "./img/chair.jpeg");
-new OddDuck("cthulhu", "./img/cthulhu.jpeg");
-new OddDuck("dog-duck", "./img/dog-duck.jpeg");
-new OddDuck("dragon", "./img/dragon.jpeg");
-new OddDuck("pen", "./img/pen.jpeg");
-new OddDuck("pet-sweep", "./img/pet-sweep.jpeg");
-new OddDuck("scissors", "./img/scissors.jpeg");
-new OddDuck("shark", "./img/shark.jpeg");
-new OddDuck("sweep", "./img/sweep.jpeg");
-new OddDuck("tauntaun", "./img/tauntaun.jpeg");
-new OddDuck("unicorn", "./img/unicorn.jpeg");
-new OddDuck("water-can", "./img/water-can.jpeg");
-new OddDuck("wine-glass", "./img/wine-glass.jpeg");
+//TODO LOCAL STORAGE DATA
 
+function setLocalStorage() {
+  localStorage.setItem("duckdata", JSON.stringify(OddDuck.allDuckArray)); //TODO Get the local storae data in as a sring(if its not set, it will be undefined (falsy))
+}
+
+//TODO This will run every time the page loads
+function checkLocalStorage() {
+  const localData = JSON.parse(localStorage.getItem("duckdata")); //TODO Using Parse to bring it into our string
+
+  if (localData) {
+    //TODO This is checking to see it is true and stored on the local data.
+    for (let i = 0; i < localData.length; i++) {
+      //Todo LocalData and create a new Duck for every item
+      let name = localData[i].name;
+      let src = localData[i].src;
+      let views = localData[i].views;
+      let clicks = localData[i].clicks;
+      new OddDuck(name, src, views, clicks);
+    }
+  } else {
+    new OddDuck("bag", "./img/bag.jpeg");
+    new OddDuck("banana", "./img/banana.jpeg");
+    new OddDuck("bathroom", "./img/bathroom.jpeg");
+    new OddDuck("boots", "./img/boots.jpeg");
+    new OddDuck("breafast", "./img/breakfast.jpeg");
+    new OddDuck("bubblegum", "./img/bubblegum.jpeg");
+    new OddDuck("chair", "./img/chair.jpeg");
+    new OddDuck("cthulhu", "./img/cthulhu.jpeg");
+    new OddDuck("dog-duck", "./img/dog-duck.jpeg");
+    new OddDuck("dragon", "./img/dragon.jpeg");
+    new OddDuck("pen", "./img/pen.jpeg");
+    new OddDuck("pet-sweep", "./img/pet-sweep.jpeg");
+    new OddDuck("scissors", "./img/scissors.jpeg");
+    new OddDuck("shark", "./img/shark.jpeg");
+    new OddDuck("sweep", "./img/sweep.jpeg");
+    new OddDuck("tauntaun", "./img/tauntaun.jpeg");
+    new OddDuck("unicorn", "./img/unicorn.jpeg");
+    new OddDuck("water-can", "./img/water-can.jpeg");
+    new OddDuck("wine-glass", "./img/wine-glass.jpeg");
+  }
+}
+checkLocalStorage(); //TODO Set function to run
 renderOddDuck(); // Final render
 
+buttonClear.addEventListener("click", function () {
+  //TODO Clears the chart and data
+  localStorage.removeItem("duckdata"); //TODO Removes the duckdata
+  document.getElementById("container-chart").innerHTML = ""; //TODO Clears the chart
+});
+
+buttonRestart.addEventListener("click", function () {
+  location.reload();
+});
+
 duckContainer.addEventListener("click", buttonClick);
+
+// #261c2c
