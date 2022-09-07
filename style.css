@@ -37,6 +37,7 @@ body {
 }
 
 .clicks-allowed {
+  margin-right: 20px;
   border: 2px solid #f5bd02;
   font-weight: 600;
   font-size: 1rem;
