@@ -7,7 +7,7 @@ let image2 = document.getElementById("image2");
 let image3 = document.getElementById("image3");
 
 let click = 0; // This is used for click count
-let maxClick = 2; // This is max clicks the user is allowed
+let maxClick = 3; // This is max clicks the user is allowed
 let usedDucks = [];
 
 function OddDuck(name, src) {

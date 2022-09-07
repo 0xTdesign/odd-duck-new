@@ -19,20 +19,36 @@ body {
   margin-top: 20px;
   margin-bottom: 100px;
 }
-.logo button {
+
+.not-voting {
+  background-color: black;
+}
+
+.logo .btn {
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 15px;
+  border: 2px solid #3e2d4055;
+  border-radius: 20px;
+  background-color: #f5bc0261;
+  color: #3e2d406d;
+}
+
+.clicks-allowed {
+  border: 2px solid #f5bd02;
   font-weight: 600;
   font-size: 1rem;
   padding: 15px;
   border-radius: 20px;
-  background-color: #f5bd02;
-  color: #3e2d40;
-}
-
-.logo button:hover {
-  cursor: pointer;
   background-color: #3e2d40;
   color: #f5bd02;
 }
+
+/* .logo button:hover {
+  cursor: pointer;
+  background-color: #3e2d40;
+  color: #f5bd02;
+}  */
 
 .duck {
   transform: scaleX(-1);
@@ -50,6 +66,21 @@ body {
   max-width: 1100px;
   justify-content: space-around;
   display: flex;
+}
+
+.container-content {
+  margin: auto;
+  padding: 0 auto;
+  max-width: 1100px;
+  text-align: center;
+}
+.content {
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #3e2d40;
 }
 
 #image1,
