@@ -7,7 +7,7 @@ let image2 = document.getElementById("image2");
 let image3 = document.getElementById("image3");
 
 let click = 0; // This is used for click count
-let maxClick = 3; // This is max clicks the user is allowed
+let maxClick = 25; // This is max clicks the user is allowed
 let usedDucks = [];
 
 function OddDuck(name, src) {
@@ -33,7 +33,16 @@ function renderOddDuck() {
   let duck2 = getRandomNum();
   let duck3 = getRandomNum();
 
-  while (duck1 === duck2 || duck2 === duck3 || duck1 === duck3) {
+  // Check none of the numbers are the same or that they arent in the usded Products arrary, otherwise, reset them.
+
+  while (
+    duck1 === duck2 ||
+    duck2 === duck3 ||
+    duck1 === duck3 ||
+    usedDucks.includes(duck1) ||
+    usedDucks.includes(duck2) ||
+    usedDucks.includes(duck3)
+  ) {
     console.log("Keeps looping the image count");
     duck1 = getRandomNum();
     duck2 = getRandomNum();
@@ -52,7 +61,10 @@ function renderOddDuck() {
   OddDuck.allDuckArray[duck2].views++;
   OddDuck.allDuckArray[duck3].views++;
 
+  // Clear out usedDucks ready for the current ones
   usedDucks = [];
+
+  // push the new ducks into the array ready for the next time this function runs
   usedDucks.push(duck1, duck2, duck3);
 }
 
@@ -68,7 +80,7 @@ function buttonClick(event) {
     let clickDuck = event.target.alt; //  Check if the Duck we clicked on's name matches the current looping Duck
 
     for (let i = 0; i < OddDuck.allDuckArray.length; i++) {
-      // Loop through an amount of times equal to the number of goats
+      // Loop through an amount of times equal to the number of ducks
       if (clickDuck === OddDuck.allDuckArray[i].name) {
         // Chck if the duck we clicked on's name matches the current looping Duck
         OddDuck.allDuckArray[i].click++;
@@ -78,12 +90,12 @@ function buttonClick(event) {
     if (click === maxClick) {
       // Once the clicks have reached max clicks then it will stop the image click
       duckContainer.removeEventListener("click", buttonClick);
-
       // Now the button will light up to be able to click .
       button.addEventListener("click", renderChart); // was renderesults
       // Style button
       button.className = "clicks-allowed";
       duckContainer.classname = "not-voting";
+      alert("You have reach max amounts of trys. Please press the Reuslts.");
     } else {
       renderOddDuck();
     }
