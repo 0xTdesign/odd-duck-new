@@ -189,3 +189,58 @@ canvas {
 .dark h1 {
   font-size: 2rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .logo .btn {
+    margin-right: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 5px;
+    border-radius: 20px;
+  }
+
+  .clicks-allowed {
+    margin-right: 20px;
+    border: 2px solid #f5bd02;
+    font-weight: 600;
+    font-size: 0.6rem;
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .footerlist li {
+    font-size: 0.8rem;
+    list-style: none;
+  }
+
+  .dark h1 {
+    font-size: 1.6rem;
+  }
+  .light h1 {
+    font-size: 1.6rem;
+  }
+
+  .label {
+    width: 45px;
+    height: 21px;
+    background-color: #3e2d40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 50px;
+    padding: 2.5px;
+    position: relative;
+    transform: scale(0.8);
+  }
+
+  .ball {
+    width: 17px;
+    height: 16.5px;
+    background-color: #f5bd02;
+    position: absolute;
+    border-radius: 22px;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.1s linear;
+  }
+}
