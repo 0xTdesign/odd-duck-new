@@ -159,7 +159,7 @@ function renderChart() {
       scales: {
         y: {
           ticks: {
-            color: "#3e2d40",
+            color: "black",
             beginAtZero: true,
             font: {
               size: 14,
@@ -168,7 +168,7 @@ function renderChart() {
         },
         x: {
           ticks: {
-            color: "#3e2d40",
+            color: "black",
             beginAtZero: true,
             font: {
               size: 14,
