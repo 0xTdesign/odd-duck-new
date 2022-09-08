@@ -195,20 +195,24 @@ canvas {
   .logo .btn {
     margin-right: 20px;
     font-weight: 600;
-    font-size: 0.8rem;
-    padding: 8px;
+    font-size: 0.7rem;
+    padding: 5px;
+    border: 2px solid #3e2d4055;
     border-radius: 20px;
+    background-color: #f5bc0261;
+    color: #3e2d406d;
   }
 
   .clicks-allowed {
     margin-right: 20px;
     border: 2px solid #f5bd02;
     font-weight: 600;
-    font-size: 0.6rem;
-    padding: 8px;
+    font-size: 0.7rem;
+    padding: 5px;
     border-radius: 20px;
+    background-color: #3e2d40;
+    color: #f5bd02;
   }
-
   .footerlist li {
     font-size: 0.8rem;
     list-style: none;
