@@ -199,8 +199,8 @@ canvas {
     padding: 5px;
     border: 2px solid #3e2d4055;
     /* border-radius: 20px; */
-    background-color: #3e2d40;
-    color: #3e2d406d;
+    background-color: blanchedalmond;
+    color: #f5bd02;
   }
 
   .clicks-allowed {
@@ -210,7 +210,7 @@ canvas {
     font-size: 0.7rem;
     padding: 5px;
     /* border-radius: 20px; */
-    background-color: #3e2d40;
+    background-color: blanchedalmond;
     color: #f5bd02;
   }
   .footerlist li {
