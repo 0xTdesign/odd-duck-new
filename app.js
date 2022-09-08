@@ -137,7 +137,7 @@ function renderChart() {
     datasets: [
       {
         label: "likes",
-        backgroundColor: "#3E2D40",
+        backgroundColor: "#CBC3E3",
         borderColor: "#fffff",
         borderWidth: 1,
         data: duckLikes,

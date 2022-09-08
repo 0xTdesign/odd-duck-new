@@ -134,7 +134,7 @@ function renderChart() {
     datasets: [
       {
         label: "likes",
-        backgroundColor: "#3E2D40",
+        backgroundColor: " #5a3c6b",
         borderColor: "#fffff",
         borderWidth: 1,
         data: duckLikes,
@@ -155,6 +155,9 @@ function renderChart() {
     options: {
       scales: {
         y: {
+          ticks: {
+            color: "black",
+          },
           beginAtZero: true,
         },
       },
