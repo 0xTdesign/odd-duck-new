@@ -31,7 +31,7 @@ body {
   border: 2px solid #3e2d4055;
   /* border-radius: 20px; */
   background-color: blanchedalmond;
-  color: #3e2d406d;
+  color: #3e2d40;
 }
 
 .clicks-allowed {
@@ -42,7 +42,7 @@ body {
   padding: 15px;
   /* border-radius: 20px; */
   background-color: blanchedalmond;
-  color: #f5bd02;
+  color: #3e2d40;
 }
 
 /* .logo button:hover {
@@ -200,7 +200,7 @@ canvas {
     border: 2px solid #3e2d4055;
     /* border-radius: 20px; */
     background-color: blanchedalmond;
-    color: #f5bd02;
+    color: #3e2d40;
   }
 
   .clicks-allowed {
@@ -211,7 +211,7 @@ canvas {
     padding: 5px;
     /* border-radius: 20px; */
     background-color: blanchedalmond;
-    color: #f5bd02;
+    color: #3e2d40;
   }
   .footerlist li {
     font-size: 0.8rem;
