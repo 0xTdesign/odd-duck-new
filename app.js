@@ -158,7 +158,22 @@ function renderChart() {
     options: {
       scales: {
         y: {
-          beginAtZero: true,
+          ticks: {
+            color: "#3e2d40",
+            beginAtZero: true,
+            font: {
+              size: 14,
+            },
+          },
+        },
+        x: {
+          ticks: {
+            color: "#3e2d40",
+            beginAtZero: true,
+            font: {
+              size: 14,
+            },
+          },
         },
       },
     },
